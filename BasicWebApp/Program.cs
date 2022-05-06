@@ -6,7 +6,8 @@ namespace BasicWebApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            AsyncServer server = new AsyncServer();
+            server.RunServer();
         }
     }
 }

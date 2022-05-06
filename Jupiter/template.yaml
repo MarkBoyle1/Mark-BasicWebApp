@@ -1,0 +1,125 @@
+---
+apiVersion: v1
+kind: Template
+metadata:
+  annotations:
+    description: "Basic web app for phase 2 acceleration"
+  name: $(name)
+objects:
+  -
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      labels:
+        app: $(name)
+        repo: $(repo)
+      name: $(name)
+      namespace: $(namespace)
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: $(name)
+      template:
+        metadata:
+          labels:
+            app: $(name)
+            repo: $(repo)
+        spec:
+          containers:
+            -
+              image: "$(image):$(imageTag)"
+              name: mark-basic-web-api
+              ports:
+                -
+                  containerPort: $((containerPort))
+              env:
+                - name: INITIAL_NAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: mark-basic-web-app-secret
+                      key: initialName
+  -
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      annotations:
+        kubernetes.io/tls-acme: "true"
+      labels:
+        app: $(name)
+        repo: $(repo)
+      name: $(name)
+      namespace: $(namespace)
+    spec:
+      rules:
+        -
+          host: $(host)
+          http:
+            paths:
+              -
+                backend:
+                  service:
+                    name: $(name)
+                    port:
+                      number: 80
+                path: /
+                pathType: Prefix
+      tls:
+        -
+          hosts:
+            - $(host)
+          secretName: $(name)-tls
+  -
+    apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+      labels:
+        app: $(name)
+        repo: $(repo)
+      name: $(name)
+      namespace: $(namespace)
+    spec:
+      ports:
+        -
+          port: 80
+          targetPort: $((containerPort))
+      selector:
+        app: $(name)
+parameters:
+  -
+    description: "application name"
+    name: name
+    parameterType: string
+    required: true
+  -
+    description: "kube namespace"
+    name: namespace
+    parameterType: string
+    required: true
+  -
+    description: "source code repository (eg jupiter-docs)"
+    name: repo
+    parameterType: string
+    required: true
+  -
+    description: "Kube demo port"
+    name: containerPort
+    parameterType: int
+    required: true
+  -
+    description: "docker image to use"
+    name: image
+    parameterType: string
+    required: true
+  -
+    description: "image tag (ie. version)"
+    name: imageTag
+    parameterType: string
+    required: true
+  -
+    description: "hostname application will be exposed on (eg. go-boldly.svc.platform.myobdev.com)"
+    name: host
+    parameterType: string
+    required: true

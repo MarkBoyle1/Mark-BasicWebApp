@@ -1,0 +1,17 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/Users/Mark.Boyle/Library/Caches/JetBrains/Rider2021.2/resharper-host/temp/Rider/vAny/CoverageData/_BasicWebApp.-1094188099/Snapshot/snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0f51dbdf_002D4d4f_002D4c34_002Daa38_002D58293b42625a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="given_RequestBodyNameEqualsAndy_and_PersonIdEqualsOne_when_UpdatePerson_then_PersonOneNameEqualsAndy #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/Mark.Boyle/Projects/PhaseTwo/BasicWebApp/BasicWebAppTests" Presentation="&amp;lt;BasicWebAppTests&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=487e06c5_002D5960_002D47a8_002Da1b7_002Da2fe4c098e9c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="given_RequestBodyNameEqualsAndy_and_PersonIdEqualsOne_when_UpdatePerson_then_PersonOneNameEqualsAndy" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/Mark.Boyle/Projects/PhaseTwo/BasicWebApp/BasicWebAppTests" Presentation="&amp;lt;BasicWebAppTests&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=724292ee_002D97f6_002D4193_002Da03e_002Deb5275891f53/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="given_HttpVerbEqualsPOST_when_ProcessRequest_then_AddPersonIsCalledOnce" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/Mark.Boyle/Projects/PhaseTwo/BasicWebApp/BasicWebAppTests" Presentation="&amp;lt;BasicWebAppTests&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c910715b_002D9083_002D43a0_002Daa72_002Da9875d387520/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Solution /&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d0b10546_002Da6d4_002D4a38_002Dacbf_002D5cc7b68bea15/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="given_IdTwoDoesNotExist_when_UpdatePerson_then_throwIdDoesNotExistException" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/Mark.Boyle/Projects/PhaseTwo/BasicWebApp/BasicWebAppTests" Presentation="&amp;lt;BasicWebAppTests&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

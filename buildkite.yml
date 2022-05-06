@@ -1,0 +1,29 @@
+---
+steps:
+  - label: 'Run unit tests'
+    command: './Scripts/test.sh'
+    agents:
+      queue: fma-margaret-lab
+
+  - wait
+
+  - name: ":sonarqube: Run SonarQube scan"
+    command: './Scripts/scan.sh'
+    agents:
+      queue: fma-margaret-lab
+      
+  - wait
+  
+  - label: 'Build and Publish Docker Image to Cloudsmith'
+    command: './Scripts/build.sh'
+    branches: "main"
+    agents:
+      queue: fma-margaret-lab
+      
+  - wait
+
+  - label: 'Deploy to Jupiter'
+    command: './Scripts/deploy.sh'
+    branches: "main"
+    agents:
+      queue: europa-preprod-fma
