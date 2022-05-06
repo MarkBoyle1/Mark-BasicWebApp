@@ -4,13 +4,6 @@ steps:
     command: './Scripts/test.sh'
     agents:
       queue: fma-margaret-lab
-
-  - wait
-
-  - name: ":sonarqube: Run SonarQube scan"
-    command: './Scripts/scan.sh'
-    agents:
-      queue: fma-margaret-lab
       
   - wait
   
