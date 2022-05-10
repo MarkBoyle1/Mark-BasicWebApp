@@ -71,19 +71,19 @@ namespace BasicWebApp
             }
             catch (EmptyBodyException)
             {
-                return new Response(Messages.EmptyBodyMessage, Constants.StatusCodesBadRequest);
+                return new Response(Messages.EmptyBodyMessage, Constants.StatusCodeBadRequest);
             }
             catch (InvalidBodyException)
             {
-                return new Response(Messages.InvalidBodyMessage, Constants.StatusCodesBadRequest);
+                return new Response(Messages.InvalidBodyMessage, Constants.StatusCodeBadRequest);
             }
             catch (IdDoesNotExistException)
             {
-                return new Response(Messages.InvalidIdMessage, Constants.StatusCodesBadRequest);
+                return new Response(Messages.InvalidIdMessage, Constants.StatusCodeNotFound);
             }
             catch (MissingIdException)
             {
-                return new Response(Messages.MissingIdMessage, Constants.StatusCodesBadRequest);
+                return new Response(Messages.MissingIdMessage, Constants.StatusCodeBadRequest);
             }
         }
     }

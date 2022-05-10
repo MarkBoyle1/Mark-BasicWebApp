@@ -139,7 +139,7 @@ namespace BasicWebAppTests
             Response response = controllerPerson.ProcessRequest(request);
             
             Assert.Equal("Error: Request body is empty.", response.Body);
-            Assert.Equal(Constants.StatusCodesBadRequest, response.StatusCode);
+            Assert.Equal(Constants.StatusCodeBadRequest, response.StatusCode);
         }
         
         [Fact]
@@ -161,7 +161,7 @@ namespace BasicWebAppTests
             Response response = controllerPerson.ProcessRequest(request);
             
             Assert.Equal("Error: Invalid request body.", response.Body);
-            Assert.Equal(Constants.StatusCodesBadRequest, response.StatusCode);
+            Assert.Equal(Constants.StatusCodeBadRequest, response.StatusCode);
         }
         
         [Fact]
@@ -228,7 +228,7 @@ namespace BasicWebAppTests
             Response response = controllerPerson.ProcessRequest(request);
             
             Assert.Equal("Error: Request body is empty.", response.Body);
-            Assert.Equal(Constants.StatusCodesBadRequest, response.StatusCode);
+            Assert.Equal(Constants.StatusCodeBadRequest, response.StatusCode);
         }
         
         [Fact]
@@ -249,7 +249,7 @@ namespace BasicWebAppTests
             Response response = controllerPerson.ProcessRequest(request);
             
             Assert.Equal("Error: Invalid request body.", response.Body);
-            Assert.Equal(Constants.StatusCodesBadRequest, response.StatusCode);
+            Assert.Equal(Constants.StatusCodeBadRequest, response.StatusCode);
         }
         
         [Fact]

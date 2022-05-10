@@ -69,7 +69,7 @@ namespace BasicWebApp
             }
             catch (InvalidControllerException)
             {
-                response = new Response(String.Empty, Constants.StatusCodesBadRequest);
+                response = new Response(String.Empty, Constants.StatusCodeNotFound);
             }
             
             var buffer = Encoding.UTF8.GetBytes(response.Body);

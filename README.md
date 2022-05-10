@@ -37,7 +37,6 @@ Returns data for all stored persons in JSON format.
 | Status Code     | Response Body |
 | ----------- | ----------- |
 | 200     | [{"id": 1, "Name": "Mark"}, {"id": 2, "Name": "John"}] |
-| 400   | "Error: No id was given."      |
 
 ### POST /person
 
@@ -67,7 +66,7 @@ Returns data for an individual person in JSON format.
 | ----------- | ----------- |
 | 200     | {"id": 1, "Name": "John"} |
 | 400   | "Error: No id was given."      |
-| 400   | "Error: Id does not exist."     |
+| 404   | "Error: Id does not exist."     |
 
 ### DELETE /person/{id}
 
@@ -79,7 +78,7 @@ Deletes an individual person.
 | ----------- | ----------- |
 | 200     |  |
 | 400   | "Error: No id was given."      |
-| 400   | "Error: Id does not exist."      |
+| 404   | "Error: Id does not exist."      |
 
 ### PUT /person/{id}
 
@@ -97,7 +96,7 @@ Example body:
 | ----------- | ----------- |
 | 200     |   |
 | 400   | "Error: No id was given."      |
-| 400   | "Error: Id does not exist."      |
+| 404   | "Error: Id does not exist."      |
 | 400   | "Error: Invalid request body."     |
 | 400   | "Error: Request body is empty."    |
 
@@ -120,3 +119,4 @@ Returns a greeting for an individual person.
 | Status Code     | Response Body |
 | ----------- | ----------- |
 | 200     | "Hello \<name\>, the time on the server is \<time\> \<day\>, \<date\>" |
+| 404   | "Error: Id does not exist."      |

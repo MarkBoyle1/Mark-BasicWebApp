@@ -34,7 +34,7 @@ namespace BasicWebApp.Controllers
              }
              catch (IdDoesNotExistException)
              {
-                 return new Response(Messages.InvalidIdMessage, Constants.StatusCodesBadRequest);
+                 return new Response(Messages.InvalidIdMessage, Constants.StatusCodeNotFound);
              }
 
              Response response = new Response(responseBody, _statusCode);

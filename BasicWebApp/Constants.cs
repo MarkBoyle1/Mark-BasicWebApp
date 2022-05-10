@@ -14,7 +14,8 @@ namespace BasicWebApp
         public static string InitialPerson = Environment.GetEnvironmentVariable("INITIAL_NAME");
 
         public const int StatusCodeMethodNotAllowed = 405;
-        public const int StatusCodesBadRequest = 400;
+        public const int StatusCodeNotFound = 404;
+        public const int StatusCodeBadRequest = 400;
         public const int StatusCodeOk = 200;
         public const int StatusCodeCreated = 201;
         
