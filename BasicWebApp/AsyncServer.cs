@@ -56,11 +56,12 @@ namespace BasicWebApp
             
             Console.WriteLine($"{context.Request.HttpMethod} {context.Request.Url}");
             
-            Request request = _requestParser.ParseRequest(context);
             Response response;
 
             try
             {
+                Request request = _requestParser.ParseRequest(context);
+
                 _controller = SetController(request);
                 response = _controller.ProcessRequest(request);
             }
