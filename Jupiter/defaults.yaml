@@ -1,0 +1,7 @@
+# defaults.yaml
+repo: Mark-BasicWebApp
+name: mark-basic-web-app
+namespace: fma
+image: docker.myob.com/future-makers-academy/mark-basic-web-app
+containerPort: "8080"
+host: mark-basic-web-app.svc.platform.myobdev.com
