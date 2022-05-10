@@ -31,7 +31,7 @@ namespace BasicWebAppTests
         }
         
         [Fact]
-        public void given_HttpVerbEqualsGET_and_IdEqualsOne_when_ProcessRequest_then_GetPersonInfoIsCalledOnce()
+        public void given_HttpVerbEqualsGET_and_ValidId_when_ProcessRequest_then_GetPersonInfoIsCalledOnce()
         {
             int? id = 1;
             var mockService = new  Mock<IServicePerson>();
@@ -109,8 +109,7 @@ namespace BasicWebAppTests
             var mockService = new Mock<IServicePerson>();
             var mockDTOGenerator = new Mock<IDTOGenerator>();
             mockDTOGenerator.Setup(mock => mock.GeneratePersonDTO(requestBody, id)).Returns(personDto);
-
-        
+            
             ControllerPerson controllerPerson = new ControllerPerson(mockService.Object, mockDTOGenerator.Object);
             
             Request request = new Request(httpVerb, requestBody, controllerType, id);
@@ -166,7 +165,7 @@ namespace BasicWebAppTests
         
         [Fact]
         public void
-            given_HttpVerbEqualsDELETE_and_IdEqualsOne_when_ProcessRequest_then_return_StatusCode200_and_EmptyBody()
+            given_HttpVerbEqualsDELETE_and_IdEqualsOne_when_ProcessRequest_then_return_StatusCodeOk_and_EmptyBody()
         {
             IDatabase mockDatabase = new MockDatabase();
             mockDatabase.AddPerson(new Person("Mark"));
@@ -183,13 +182,13 @@ namespace BasicWebAppTests
         
             Response response = controllerPerson.ProcessRequest(request);
             
-            Assert.Equal(200, response.StatusCode);
+            Assert.Equal(Constants.StatusCodeOk, response.StatusCode);
             Assert.Empty(response.Body);
         }
         
         [Fact]
         public void
-            given_HttpVerbEqualsDELETE_and_IdDoesNotExist_when_ProcessRequest_then_return_StatusCode400_and_ErrorMessage()
+            given_HttpVerbEqualsDELETE_and_IdDoesNotExist_when_ProcessRequest_then_return_StatusCodeNotFound_and_ErrorMessage()
         {
             IDatabase mockDatabase = new MockDatabase();
             IServicePerson servicePerson = new ServicePerson(mockDatabase);
@@ -204,7 +203,7 @@ namespace BasicWebAppTests
         
             Response response = controllerPerson.ProcessRequest(request);
             
-            Assert.Equal(404, response.StatusCode);
+            Assert.Equal(Constants.StatusCodeNotFound, response.StatusCode);
             Assert.Equal("Error: Id does not exist.", response.Body);
         }
         

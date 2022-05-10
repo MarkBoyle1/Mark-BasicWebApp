@@ -7,7 +7,7 @@ namespace BasicWebAppTests
     {
         [Fact]
         public void
-            given_RequestBodyContainsNameEqualsBob_when_GenerateAddPersonDTO_then_return_AddPersonDTOWhereNameEqualsBob()
+            given_RequestBodyContainsValidName_when_GenerateAddPersonDTO_then_return_AddPersonDTOWithSameName()
         {
             string requestBody = "{\"Name\": \"Bob\"}";
             
@@ -20,7 +20,7 @@ namespace BasicWebAppTests
         
         [Fact]
         public void
-            given_RequestBodyContainsNameEqualsBob_and_IdEqualsOne_when_GenerateUpdatedPersonDTO_then_return_UpdatedPersonDTOWhereNameEqualsBobAndIdEqualsOne()
+            given_RequestBodyContainsValidName_and_ValidId_when_GenerateUpdatedPersonDTO_then_return_UpdatedPersonDTOWithSameNameAndId()
         {
             int? id = 1;
             string requestBody = "{\"Name\": \"Bob\"}";

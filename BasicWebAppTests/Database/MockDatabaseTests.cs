@@ -9,7 +9,7 @@ namespace BasicWebAppTests
     public class MockDatabaseTests
     {
         [Fact]
-        public void given_InitialDataContainsMark_when_GetPersonList_then_return_ListContainingMark()
+        public void given_InitialDataContainsValidName_when_GetPersonList_then_return_ListContainingSameName()
         {
             MockDatabase database = new MockDatabase();
             database.AddPerson(new Person("Mark"));
@@ -20,7 +20,7 @@ namespace BasicWebAppTests
         }
         
         [Fact]
-        public void given_PersonIdEqualsTwo_when_GetPersonInfo_then_return_InfoForPersonTwo()
+        public void given_PersonIdEqualsValidId_when_GetPersonInfo_then_return_InfoForPersonWithSameId()
         {
             MockDatabase database = new MockDatabase();
             database.AddPerson(new Person("Mark"));
@@ -32,7 +32,7 @@ namespace BasicWebAppTests
         }
         
         [Fact]
-        public void given_PersonNameEqualsBob_when_AddPerson_then_return_ListContainingBob()
+        public void given_PersonNameEqualsValidName_when_AddPerson_then_return_ListContainingSameName()
         {
             MockDatabase database = new MockDatabase();
             database.AddPerson(new Person("Mark"));
@@ -46,7 +46,7 @@ namespace BasicWebAppTests
         }
         
         [Fact]
-        public void given_ListContainsOne_when_DeletePerson_then_return_EmptyList()
+        public void given_ValidId_when_DeletePerson_then_return_ListWithOneLessPerson()
         {
             MockDatabase database = new MockDatabase();
             database.AddPerson(new Person("Mark"));
@@ -59,7 +59,7 @@ namespace BasicWebAppTests
         }
         
         [Fact]
-        public void setIdsOnInitialSetUp()
+        public void given_setIdsOnInitialSetUp()
         {
             MockDatabase database = new MockDatabase();
             database.AddPerson(new Person("Mark"));
@@ -72,7 +72,7 @@ namespace BasicWebAppTests
         }
         
         [Fact]
-        public void given_PersonTwoNameEqualsAndy_and_NewDataNameEqualsBob_when_UpdatePerson_then_PersonTwoNameEqualsBob()
+        public void given_ValidId_and_NewDataNameEqualsValidName_when_UpdatePerson_then_PersonWithSameIdHasUpdatedName()
         {
             MockDatabase database = new MockDatabase();
             database.AddPerson(new Person("Mark"));

@@ -29,7 +29,7 @@ namespace BasicWebAppTests
         }
         
         [Fact]
-        public void given_HttpVerbEqualsGET_and_IdEqualsOne_when_ProcessRequest_then_call_GetIndividualGreeting()
+        public void given_HttpVerbEqualsGET_and_ValidId_when_ProcessRequest_then_call_GetIndividualGreeting()
         {
             var mockService = new Mock<IServiceGreeting>();
             

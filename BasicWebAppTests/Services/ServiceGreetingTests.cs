@@ -39,7 +39,7 @@ namespace BasicWebAppTests
         }
         
         [Fact]
-        public void given_PersonIDEqualsTwo_when_GetIndividualGreeting_then_return_GreetingForPersonTwo()
+        public void given_ValidId_when_GetIndividualGreeting_then_return_GreetingForPersonWithSameId()
         {
             IDatabase mockDatabase = new MockDatabase();
             mockDatabase.AddPerson(new Person("Mark"));
@@ -54,7 +54,7 @@ namespace BasicWebAppTests
         }
         
         [Fact]
-        public void given__PersonIDDoesNotExist_when_GetIndividualGreeting_then_ThrowIdDoesNotExistException()
+        public void given_PersonIDDoesNotExist_when_GetIndividualGreeting_then_ThrowIdDoesNotExistException()
         {
             IDatabase mockDatabase = new MockDatabase();
             mockDatabase.AddPerson(new Person("Mark"));
