@@ -12,11 +12,9 @@ namespace BasicWebAppTests
         [Fact]
         public void given_DatabaseContainsOneName_when_GetGroupGreeting_then_return_GreetingForPersonOne()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark")
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+
             ServiceGreeting service =
                 new ServiceGreeting(mockDatabase, "11:30:14 am", "Wednesday, 23 February 2022");
 
@@ -28,12 +26,10 @@ namespace BasicWebAppTests
         [Fact]
         public void given_DatabaseContainsTwoPeople_when_GetGroupGreeting_then_return_GreetingForTwoPeople()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark"),
-                new Person("Bob")
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+            mockDatabase.AddPerson(new Person("Bob"));
+
             ServiceGreeting service =
                 new ServiceGreeting(mockDatabase, "11:30:14 am", "Wednesday, 23 February 2022");
 
@@ -45,12 +41,10 @@ namespace BasicWebAppTests
         [Fact]
         public void given_PersonIDEqualsTwo_when_GetIndividualGreeting_then_return_GreetingForPersonTwo()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark"),
-                new Person("Bob")
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+            mockDatabase.AddPerson(new Person("Bob"));
+
             ServiceGreeting service =
                 new ServiceGreeting(mockDatabase, "11:30:14 am", "Wednesday, 23 February 2022");
 
@@ -62,12 +56,10 @@ namespace BasicWebAppTests
         [Fact]
         public void given__PersonIDDoesNotExist_when_GetIndividualGreeting_then_ThrowIdDoesNotExistException()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark"),
-                new Person("Bob")
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+            mockDatabase.AddPerson(new Person("Bob"));
+
             ServiceGreeting service =
                 new ServiceGreeting(mockDatabase, "11:30:14 am", "Wednesday, 23 February 2022");
 

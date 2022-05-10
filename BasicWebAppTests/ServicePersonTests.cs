@@ -13,11 +13,9 @@ namespace BasicWebAppTests
         [Fact]
         public void given_InitialDataContainsPersonNamedMark_when_GetPersonList_then_return_ListContainingMark()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark")
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+
             ServicePerson servicePerson = new ServicePerson(mockDatabase);
         
             List<Person> answer = servicePerson.GetPersonList();
@@ -28,8 +26,9 @@ namespace BasicWebAppTests
         [Fact]
         public void given_NewPersonIsNamedBob_when_AddPerson_then_AddBobToDatabase()
         {
-            List<Person> initialData = new List<Person>() {new Person("Mark")};
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+
             ServicePerson servicePerson = new ServicePerson(mockDatabase);
             
             PersonDTO addPersonDto = new PersonDTO() {Name = "Bob"};
@@ -45,12 +44,10 @@ namespace BasicWebAppTests
         [Fact]
         public void given_IdEqualsTwo_when_DeletePerson_then_RemovePersonWithIdOfTwoFromDatabase()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark"),
-                new Person("Andy")
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+            mockDatabase.AddPerson(new Person("Andy"));
+
             ServicePerson servicePerson = new ServicePerson(mockDatabase);
 
             servicePerson.DeletePerson(2);
@@ -64,12 +61,10 @@ namespace BasicWebAppTests
         [Fact]
         public void given_IdEqualsThree_IdDoesNotExist_when_DeletePerson_then_ThrowIdDoesNotExistException()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark"),
-                new Person("Andy")
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+            mockDatabase.AddPerson(new Person("Andy"));
+
             ServicePerson servicePerson = new ServicePerson(mockDatabase);
 
             Assert.Throws<IdDoesNotExistException>(() => servicePerson.DeletePerson(3));
@@ -78,12 +73,10 @@ namespace BasicWebAppTests
         [Fact]
         public void given_InitialDataContainsPersonNamedMary_PersonToAddIsNamedMary_when_AddPerson_then_DoNotAddMaryToPersonList()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark"),
-                new Person("Mary")
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+            mockDatabase.AddPerson(new Person("Mary"));
+
             ServicePerson servicePerson = new ServicePerson(mockDatabase);
             PersonDTO addPersonDto = new PersonDTO() {Name = "Mary"};
         
@@ -97,11 +90,9 @@ namespace BasicWebAppTests
         [Fact]
         public void given_NewNameEqualsAndy_and_PersonIdEqualsOne_when_UpdatePerson_then_PersonOneNameEqualsAndy()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark")
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+
             ServicePerson servicePerson = new ServicePerson(mockDatabase);
             PersonDTO personDto = new PersonDTO(){Name = "Andy", Id = 1};
             
@@ -116,12 +107,10 @@ namespace BasicWebAppTests
         [Fact]
         public void given_NewNameEqualsAndy_and_PersonIdEqualsTwo_when_UpdatePerson_then_PersonTwoNameEqualsBob()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark"),
-                new Person("Andy")
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+            mockDatabase.AddPerson(new Person("Andy"));
+
             ServicePerson servicePerson = new ServicePerson(mockDatabase);
             PersonDTO personDto = new PersonDTO(){Name = "Bob", Id = 2};
             
@@ -137,12 +126,10 @@ namespace BasicWebAppTests
         [Fact]
         public void given_PersonTwoIsNamedBob_and_PersonIdEqualsTwo_when_GetPersonInfo_then_return_PersonNameEqualsBob()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark"),
-                new Person("Bob")
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+            mockDatabase.AddPerson(new Person("Bob"));
+
             ServicePerson servicePerson = new ServicePerson(mockDatabase);
         
             Person answer = servicePerson.GetPersonInfo(2);
@@ -153,11 +140,9 @@ namespace BasicWebAppTests
         [Fact]
         public void given_IdTwoDoesNotExist_when_UpdatePerson_then_throwIdDoesNotExistException()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark"),
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+
             ServicePerson servicePerson = new ServicePerson(mockDatabase);
 
             PersonDTO personDto = new PersonDTO(){Name = "Bob", Id = 2};
@@ -168,11 +153,9 @@ namespace BasicWebAppTests
         [Fact]
         public void given_IdTwoDoesNotExist_when_GetPersonInfo_throwIdDoesNotExistException()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person("Mark"),
-            };
-            IDatabase mockDatabase = new MockDatabase(initialData);
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
+
             ServicePerson servicePerson = new ServicePerson(mockDatabase);
         
             Assert.Throws<IdDoesNotExistException>(() => servicePerson.GetPersonInfo(2));

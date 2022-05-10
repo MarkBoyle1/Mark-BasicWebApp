@@ -8,21 +8,10 @@ namespace BasicWebApp.Database
         private List<Person> _personList;
         public int? NextId { get; set; }
 
-        public MockDatabase(List<Person> initialData)
+        public MockDatabase()
         {
-            initialData = SetIdForInitialData(initialData);
-            _personList = initialData;
-            NextId = initialData.Count + 1;
-        }
-
-        private List<Person> SetIdForInitialData(List<Person> initialData)
-        {
-            for (int id = 1; id <= initialData.Count; id++)
-            {
-                initialData[id - 1].setId(id);
-            }
-
-            return initialData;
+            _personList = new List<Person>();
+            NextId = 1;
         }
 
         public List<Person> GetPersonList()

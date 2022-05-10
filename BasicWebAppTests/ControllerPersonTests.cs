@@ -124,7 +124,7 @@ namespace BasicWebAppTests
         public void
             given_HttpVerbEqualsPOST_and_BodyIsEmpty_when_ProcessRequest_then_return_ResponseWithBadRequestCode()
         {
-            IDatabase mockDatabase = new MockDatabase(new List<Person>());
+            IDatabase mockDatabase = new MockDatabase();
             IServicePerson servicePerson = new ServicePerson(mockDatabase);
             IDTOGenerator dtoGenerator = new DTOGenerator();
 
@@ -146,7 +146,7 @@ namespace BasicWebAppTests
         public void
             given_HttpVerbEqualsPOST_and_BodyIsInvalidData_when_ProcessRequest_then_return_ResponseWithBadRequestCode()
         {
-            IDatabase mockDatabase = new MockDatabase(new List<Person>());
+            IDatabase mockDatabase = new MockDatabase();
             IServicePerson servicePerson = new ServicePerson(mockDatabase);
             IDTOGenerator dtoGenerator = new DTOGenerator();
 
@@ -168,7 +168,8 @@ namespace BasicWebAppTests
         public void
             given_HttpVerbEqualsDELETE_and_IdEqualsOne_when_ProcessRequest_then_return_StatusCode200_and_EmptyBody()
         {
-            IDatabase mockDatabase = new MockDatabase(new List<Person>(){new Person("Mark")});
+            IDatabase mockDatabase = new MockDatabase();
+            mockDatabase.AddPerson(new Person("Mark"));
             IServicePerson servicePerson = new ServicePerson(mockDatabase);
             IDTOGenerator dtoGenerator = new DTOGenerator();
 
@@ -190,7 +191,7 @@ namespace BasicWebAppTests
         public void
             given_HttpVerbEqualsDELETE_and_IdDoesNotExist_when_ProcessRequest_then_return_StatusCode400_and_ErrorMessage()
         {
-            IDatabase mockDatabase = new MockDatabase(new List<Person>());
+            IDatabase mockDatabase = new MockDatabase();
             IServicePerson servicePerson = new ServicePerson(mockDatabase);
             IDTOGenerator dtoGenerator = new DTOGenerator();
             ControllerPerson controllerPerson = new ControllerPerson(servicePerson, dtoGenerator);
@@ -203,17 +204,15 @@ namespace BasicWebAppTests
         
             Response response = controllerPerson.ProcessRequest(request);
             
-            Assert.Equal(400, response.StatusCode);
+            Assert.Equal(404, response.StatusCode);
             Assert.Equal("Error: Id does not exist.", response.Body);
         }
-        
-        
         
         [Fact]
         public void
             given_HttpVerbEqualsPUT_and_BodyIsEmpty_when_ProcessRequest_then_return_ResponseWithBadRequestCode()
         {
-            IDatabase mockDatabase = new MockDatabase(new List<Person>());
+            IDatabase mockDatabase = new MockDatabase();
             IServicePerson servicePerson = new ServicePerson(mockDatabase);
             IDTOGenerator dtoGenerator = new DTOGenerator();
 
@@ -235,7 +234,7 @@ namespace BasicWebAppTests
         public void
             given_HttpVerbEqualsPUT_and_BodyIsInvalidData_when_ProcessRequest_then_return_ResponseWithBadRequestCode()
         {
-            IDatabase mockDatabase = new MockDatabase(new List<Person>());
+            IDatabase mockDatabase = new MockDatabase();
             IServicePerson servicePerson = new ServicePerson(mockDatabase);
             IDTOGenerator dtoGenerator = new DTOGenerator();
             ControllerPerson controllerPerson = new ControllerPerson(servicePerson, dtoGenerator);
@@ -259,7 +258,7 @@ namespace BasicWebAppTests
             string body = String.Empty;
             ControllerType controllerType= ControllerType.Person;
         
-            IDatabase mockDatabase = new MockDatabase(new List<Person>());
+            IDatabase mockDatabase = new MockDatabase();
             IServicePerson servicePerson = new ServicePerson(mockDatabase);
             IDTOGenerator dtoGenerator = new DTOGenerator();
             ControllerPerson controllerPerson = new ControllerPerson(servicePerson, dtoGenerator);

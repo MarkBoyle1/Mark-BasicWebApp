@@ -20,11 +20,8 @@ namespace BasicWebApp
 
         public AsyncServer()
         {
-            List<Person> initialData = new List<Person>()
-            {
-                new Person(Constants.InitialPerson),
-            };
-            IDatabase database = new MockDatabase(initialData);
+            IDatabase database = new MockDatabase();
+            database.AddPerson(new Person(Constants.InitialPerson));
             _controllerGreeting = new ControllerGreeting(new ServiceGreeting(database));
             _controllerPerson = new ControllerPerson(new ServicePerson(database), new DTOGenerator());
             _requestParser = new RequestParser();
