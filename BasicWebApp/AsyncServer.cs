@@ -70,16 +70,7 @@ namespace BasicWebApp
                 response = new Response(String.Empty, Constants.StatusCodeNotFound);
             }
             
-            var buffer = Encoding.UTF8.GetBytes(response.Body);
-
-            // Get a response stream and write the response to it.
-            context.Response.ContentLength64 = buffer.Length;
-            context.Response.StatusCode = response.StatusCode;
-            Stream output = context.Response.OutputStream;
-            output.Write(buffer, 0, buffer.Length);
-            
-            // You must close the output stream.
-            output.Close();
+            response.Send(context);
         }
 
         private IController SetController(Request request)
